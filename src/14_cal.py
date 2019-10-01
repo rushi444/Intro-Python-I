@@ -21,4 +21,22 @@ and does the following:
 
 import sys
 import calendar
-from datetime import datetime
+from datetime import date
+
+m = input("Input the month : ")
+y = input("Input the year : ")
+
+if(len(y) == 0 and len(m) == 0):
+    today = date.today()
+    print(calendar.month(today.year, today.month))
+    print(f"You did not enter any data, so you got today's date: {today}")
+elif(len(y) == 0 or len(m) == 0):
+    today = date.today()
+    if(len(y) == 0):
+        print(calendar.month(today.year, int(m)))
+    else:
+        print(calendar.month(today.year, int(y)))
+elif(int(m) > 0 and int(y) > 1900):
+    print(calendar.month(int(y), int(m)))
+else:
+    print("Please specify two-digit month, four-digit year")
